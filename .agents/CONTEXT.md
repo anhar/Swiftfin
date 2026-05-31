@@ -27,3 +27,9 @@ _Avoid_: Implementation plan, project documentation
 
 **Agent Plan**: A fork-only planning document stored under `.agents/plans/` for agent-authored implementation plans, research-to-plan transitions, or feature strategy drafts that are not curated upstream documentation.
 _Avoid_: ADR, project documentation
+
+**Client-Managed Offline Bridge**: A practical Swiftfin-owned offline playback implementation built on existing Jellyfin primitives while the server lacks a first-class offline API.
+_Avoid_: Final offline architecture, Swiftfin-only offline standard
+
+**Shared Offline Contract**: The ideal future Jellyfin backend/client API contract for offline jobs, manifests, download profiles, support assets, and progress sync that can serve multiple clients consistently.
+_Avoid_: Swiftfin-only contract, local workaround
