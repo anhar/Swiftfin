@@ -33,3 +33,9 @@ Run scripts from anywhere inside the Swiftfin repo:
 bash .agents/scripts/update-ai-main.sh
 bash .agents/scripts/sanitize-for-upstream.sh
 ```
+
+## Vendored Skills
+
+- `.agents/vendor/skills/grill-with-docs/`: third-party skill adapted from Matt Pocock's `skills` library for ADR and glossary-driven planning.
+
+Vendored skills must keep their upstream source and license references in the vendored folder.

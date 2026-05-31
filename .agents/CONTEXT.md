@@ -1,0 +1,23 @@
+# Swiftfin Agent Context
+
+This glossary defines fork-only language for AI-assisted Swiftfin development. It is not Swiftfin product documentation and must not be submitted upstream.
+
+## Language
+
+**AI-Assisted Development**: Work where an AI agent helps with research, planning, editing, or verification, while the human contributor remains responsible for every submitted line and explanation.
+_Avoid_: AI DLC, generated work
+
+**Fork-Only Agent Context**: Files that help agents operate in this fork but are not intended for upstream Swiftfin. This includes `.agents/` guidance, ADRs, skills, scripts, and handoff notes.
+_Avoid_: Project documentation, upstream docs
+
+**ai/main**: The fork-only base branch for AI-assisted development. It tracks `.agents/` so future agents inherit local workflow context.
+_Avoid_: main, upstream main
+
+**Upstream PR Branch**: A branch created from `origin/main` for a manually curated Swiftfin contribution. It must exclude fork-only agent context.
+_Avoid_: ai/main branch, agent branch
+
+**Testing Foundation**: The smallest upstream-acceptable unit-test baseline for Swiftfin, centered on deterministic direct-code tests before broader integration, UI, or offline playback tests.
+_Avoid_: Full test suite, E2E foundation
+
+**Agent ADR**: A fork-only architecture decision record stored under `.agents/adr/` when a workflow decision is hard to reverse, non-obvious, and tradeoff-driven.
+_Avoid_: Scratch note, implementation plan

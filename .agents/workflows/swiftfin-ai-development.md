@@ -34,6 +34,17 @@ git switch -c feature/my-work
 
 Use `.agents/` for agent notes, handoff details, scratch research, and workflow-specific files. Keep source changes and durable project documentation in their normal Swiftfin locations only when they are intended to be reviewed as upstream contribution material.
 
+## Decision Records
+
+Use the vendored third-party `grill-with-docs` skill for plans that need careful domain, workflow, or architectural scrutiny:
+
+- Skill: `.agents/vendor/skills/grill-with-docs/SKILL.md`
+- Original library: https://github.com/mattpocock/skills
+- Agent glossary: `.agents/CONTEXT.md`
+- Agent ADRs: `.agents/adr/`
+
+Create Agent ADRs only for decisions that are meaningful to reverse, surprising without context, and the result of a real tradeoff. Keep these ADRs fork-only unless a decision is manually curated into upstream-facing Swiftfin documentation.
+
 ## Upstream Project Standards
 
 Before changing Swiftfin source, read the relevant project guidance:
