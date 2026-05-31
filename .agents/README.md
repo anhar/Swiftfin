@@ -34,6 +34,14 @@ bash .agents/scripts/update-ai-main.sh
 bash .agents/scripts/sanitize-for-upstream.sh
 ```
 
+## Agent Planning Files
+
+- `.agents/plans/`: implementation plans, research-to-plan transitions, and other agent-authored planning markdown that is not ready for Swiftfin `Documentation/`.
+- `.agents/adr/`: historical decision records for hard-to-reverse, non-obvious, tradeoff-driven workflow decisions.
+- `.agents/workflows/`: reusable workflow guidance.
+
+Plans are working documents. Move them into Swiftfin `Documentation/` only after manual curation and only when they are intended as upstream project documentation.
+
 ## Vendored Skills
 
 - `.agents/vendor/skills/grill-with-docs/`: third-party skill adapted from Matt Pocock's `skills` library for ADR and glossary-driven planning.

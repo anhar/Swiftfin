@@ -34,6 +34,8 @@ git switch -c feature/my-work
 
 Use `.agents/` for agent notes, handoff details, scratch research, and workflow-specific files. Keep source changes and durable project documentation in their normal Swiftfin locations only when they are intended to be reviewed as upstream contribution material.
 
+Use `.agents/plans/` for agent-authored implementation plans or feature strategy drafts. Use `.agents/adr/` only when a decision is hard to reverse, surprising without context, and tradeoff-driven. Use Swiftfin `Documentation/` only for manually curated upstream project documentation.
+
 ## Decision Records
 
 Use the vendored third-party `grill-with-docs` skill for plans that need careful domain, workflow, or architectural scrutiny:
