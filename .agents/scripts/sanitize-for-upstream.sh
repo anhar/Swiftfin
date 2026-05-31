@@ -5,7 +5,7 @@ usage() {
     cat <<'EOF'
 Usage: sanitize-for-upstream.sh [--root PATH]
 
-Remove agent-only files from a working tree before preparing an upstream PR.
+Remove fork-only agent files from a working tree before preparing an upstream PR.
 By default, the script runs from the current git repository root.
 EOF
 }
@@ -93,7 +93,10 @@ if [[ "$is_git_repo" == true ]]; then
     echo "Remaining diff summary:"
     git diff --stat
     git diff --cached --stat
+    echo
+    echo "Review reminder:"
+    echo "  This cleanup removes fork-only development scaffolding; it is not a concealment step."
+    echo "  If AI materially assisted this work, disclose that in your own words and confirm manual review."
 else
     echo "Sanitized non-git directory: ${root}"
 fi
-

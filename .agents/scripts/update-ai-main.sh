@@ -3,7 +3,6 @@ set -euo pipefail
 
 UPSTREAM_REMOTE="${UPSTREAM_REMOTE:-upstream}"
 ORIGIN_REMOTE="${ORIGIN_REMOTE:-origin}"
-UPSTREAM_HTTPS_URL="${UPSTREAM_HTTPS_URL:-https://github.com/jellyfin/Swiftfin.git}"
 MAIN_BRANCH="${MAIN_BRANCH:-main}"
 AI_BRANCH="${AI_BRANCH:-ai/main}"
 
@@ -18,18 +17,9 @@ require_clean_worktree() {
     fi
 }
 
-fetch_upstream_main() {
-    echo "Fetching ${UPSTREAM_REMOTE}/${MAIN_BRANCH}..."
-    if git fetch "$UPSTREAM_REMOTE" "$MAIN_BRANCH"; then
-        return 0
-    fi
-
-    echo "Configured upstream fetch failed; falling back to ${UPSTREAM_HTTPS_URL} ${MAIN_BRANCH}." >&2
-    git fetch "$UPSTREAM_HTTPS_URL" "$MAIN_BRANCH"
-}
-
 require_clean_worktree
-fetch_upstream_main
+echo "Fetching ${UPSTREAM_REMOTE}/${MAIN_BRANCH}..."
+git fetch "$UPSTREAM_REMOTE" "$MAIN_BRANCH"
 
 echo "Updating local ${MAIN_BRANCH}..."
 git switch "$MAIN_BRANCH"
@@ -53,4 +43,3 @@ echo "Pushing ${ORIGIN_REMOTE}/${AI_BRANCH}..."
 git push -u "$ORIGIN_REMOTE" "$AI_BRANCH"
 
 echo "Done. ${AI_BRANCH} is updated."
-

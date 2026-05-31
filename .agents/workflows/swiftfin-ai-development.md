@@ -15,14 +15,13 @@ bash .agents/scripts/update-ai-main.sh
 The update script:
 
 1. Fetches upstream Swiftfin `main`.
-2. Falls back to `https://github.com/jellyfin/Swiftfin.git` if the configured `upstream` remote cannot be fetched.
-3. Fast-forwards local `main`.
-4. Pushes `main` to `origin`.
-5. Switches to `ai/main`, creating it from `main` if needed.
-6. Merges the updated `main` into `ai/main`.
-7. Pushes `ai/main` to `origin`.
+2. Fast-forwards local `main`.
+3. Pushes `main` to `origin`.
+4. Switches to `ai/main`, creating it from `main` if needed.
+5. Merges the updated `main` into `ai/main`.
+6. Pushes `ai/main` to `origin`.
 
-If the merge into `ai/main` conflicts, resolve it on `ai/main` and keep `.agents/` as fork-only context.
+If fetching from `upstream` fails, fix the configured remote or SSH credentials instead of falling back to a different URL. If the merge into `ai/main` conflicts, resolve it on `ai/main` and keep `.agents/` as fork-only context.
 
 ## Starting AI-Assisted Work
 
@@ -37,7 +36,7 @@ Use `.agents/` for agent notes, handoff details, scratch research, and workflow-
 
 ## Preparing An Upstream PR
 
-Do not open upstream PRs directly from `ai/main` or from branches that include `.agents/` history.
+Prepare upstream PRs from `origin/main` so the submitted branch contains only manually curated project changes. Removing `.agents/` is not a concealment step; it keeps fork-only development scaffolding out of upstream. If AI materially assisted the work, disclose that in your own words and state that you manually reviewed and understand the submitted diff.
 
 Recommended PR preparation flow:
 
@@ -56,9 +55,19 @@ git diff --name-only origin/main...HEAD
 
 Manually review every remaining file and line. The PR body must be written in the contributor's own words.
 
+### Review Guardrails
+
+Before upstream submission, confirm:
+
+- The branch contains only source, tests, resources, or project documentation intended for upstream.
+- All `.agents/`, `AGENTS.md`, `.codex/`, `.claude/`, and similar development scaffolding has been removed.
+- AI-assisted changes have been manually reviewed line by line.
+- The contributor can explain the behavior, risks, and tests without pasting AI output.
+- Any material AI assistance is disclosed in the contributor's own words.
+- Tests are proportional to the change: unit tests for logic, UI/manual validation for user-facing flows, and broader end-to-end checks for cross-screen or playback behavior.
+
 ## Documentation Rule
 
 Markdown in Swiftfin `Documentation/` is not agent scratch space. It is project documentation and needs the same manual review as Swift source before an upstream PR.
 
 Use `.agents/` for generated or agent-only markdown. Move content into `Documentation/` only after it has been curated into project-facing documentation.
-
