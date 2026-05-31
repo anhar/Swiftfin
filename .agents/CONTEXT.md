@@ -22,5 +22,8 @@ _Avoid_: Full test suite, E2E foundation
 **Agent ADR**: A fork-only architecture decision record stored under `.agents/adr/` when a workflow decision is hard to reverse, non-obvious, and tradeoff-driven.
 _Avoid_: Scratch note, implementation plan
 
+**Agent Research**: A fork-only research document stored under `.agents/research/` for source, API, product, or ecosystem findings that have not been curated into upstream project documentation.
+_Avoid_: Implementation plan, project documentation
+
 **Agent Plan**: A fork-only planning document stored under `.agents/plans/` for agent-authored implementation plans, research-to-plan transitions, or feature strategy drafts that are not curated upstream documentation.
 _Avoid_: ADR, project documentation

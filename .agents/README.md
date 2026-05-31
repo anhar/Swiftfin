@@ -34,13 +34,14 @@ bash .agents/scripts/update-ai-main.sh
 bash .agents/scripts/sanitize-for-upstream.sh
 ```
 
-## Agent Planning Files
+## Agent Working Files
 
+- `.agents/research/`: source, API, and product investigations that are not ready for Swiftfin `Documentation/`.
 - `.agents/plans/`: implementation plans, research-to-plan transitions, and other agent-authored planning markdown that is not ready for Swiftfin `Documentation/`.
 - `.agents/adr/`: historical decision records for hard-to-reverse, non-obvious, tradeoff-driven workflow decisions.
 - `.agents/workflows/`: reusable workflow guidance.
 
-Plans are working documents. Move them into Swiftfin `Documentation/` only after manual curation and only when they are intended as upstream project documentation.
+Research and plans are working documents. Move them into Swiftfin `Documentation/` only after manual curation and only when they are intended as upstream project documentation.
 
 ## Vendored Skills
 
