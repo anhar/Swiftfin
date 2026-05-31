@@ -43,6 +43,7 @@ Before changing Swiftfin source, read the relevant project guidance:
 - `Documentation/players.md`: playback architecture and Swiftfin/VLCKit vs Native/AVPlayer behavior.
 - `Documentation/libraries.md`: supported library types and known product scope.
 - `.github/workflows/ci.yml` and `.github/workflows/validate-pr.yaml`: current CI build and validation commands.
+- `.agents/workflows/swiftfin-testing-strategy.md`: fork-only testing strategy and the current pause on adding test targets or CI until upstream direction is clear.
 
 Follow the repository tooling exactly:
 
@@ -80,6 +81,8 @@ Bad SwiftUI in this repo usually looks like hard-coded display text, view bodies
 For UI/UX changes, `Documentation/contributing.md` says there is no separate formal design guide, but the project aims to use native SwiftUI/UIKit components while adhering to a Jellyfin theme. New UI components can receive upstream feedback or later redesign, and user customization is welcome only when it stays maintainable and preserves Swiftfin's distinct design.
 
 Testing expectations should match risk. Simulator testing is useful, but the project specifically calls out picture-in-picture, device storage, and local network access as areas where real hardware is recommended. Offline playback work should be validated on real devices because it directly involves storage, networking reachability, and playback behavior.
+
+Do not add fork-only test harnesses, CI jobs, or `.agents/` quality scripts that assume a new Swiftfin test target exists until the upstream testing foundation has merged. Keep testing strategy in `.agents/workflows/swiftfin-testing-strategy.md`, then update `ai/main` from upstream before adding local automation around accepted project commands.
 
 ## Preparing An Upstream PR
 
