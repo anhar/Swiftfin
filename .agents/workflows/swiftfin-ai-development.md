@@ -34,6 +34,53 @@ git switch -c feature/my-work
 
 Use `.agents/` for agent notes, handoff details, scratch research, and workflow-specific files. Keep source changes and durable project documentation in their normal Swiftfin locations only when they are intended to be reviewed as upstream contribution material.
 
+## Upstream Project Standards
+
+Before changing Swiftfin source, read the relevant project guidance:
+
+- `Documentation/contributing.md`: setup, PR requirements, architecture, design, and feature discussion expectations.
+- `Documentation/version.md`: minimum OS policy and SwiftUI-driven OS support tradeoffs.
+- `Documentation/players.md`: playback architecture and Swiftfin/VLCKit vs Native/AVPlayer behavior.
+- `Documentation/libraries.md`: supported library types and known product scope.
+- `.github/workflows/ci.yml` and `.github/workflows/validate-pr.yaml`: current CI build and validation commands.
+
+Follow the repository tooling exactly:
+
+```bash
+brew bundle --file Brewfile
+swiftformat . --lint --config ".swiftformat"
+swiftlint lint --strict --config ".swiftlint.yml"
+swift Scripts/Translations/FindUnusedStrings.swift
+```
+
+SwiftFormat is configured in `.swiftformat` for Swift 6.2, a 140-column max width, 4-space indentation, no semicolons, the project MPL header, and several enabled/disabled rewrite rules. Let SwiftFormat own formatting decisions instead of hand-formatting around them.
+
+SwiftLint currently enforces the project custom rule against hard-coded display strings. User-facing strings in SwiftUI controls such as `Text`, `Button`, `Label`, `Toggle`, `Picker`, `Section`, and `LabeledContent` should use `L10n`, not string literals. Only add a `swiftlint:disable` directive when there is a narrow, reviewed justification.
+
+SwiftGen reads `Translations/en.lproj` and generates `Shared/Strings/Strings.swift`. Add new non-experimental user-facing strings to `Translations/en.lproj/Localizable.strings`, run `swiftgen`, and review generated output instead of hand-editing `Shared/Strings/Strings.swift`.
+
+The recommended Xcode version is the one pinned in `.github/workflows/ci.yml`; at the time this workflow was written, CI uses Xcode 26.3. Upstream PRs must keep automated iOS and tvOS builds passing, must not attach a developer account, and must satisfy SwiftFormat, SwiftLint, unused-string checks, localization expectations, and applicable labels.
+
+## SwiftUI And UI Code Guardrails
+
+Swiftfin is developed using SwiftUI. The iOS and tvOS clients share backend code under `Shared/`, while each client owns platform-specific views under `Swiftfin/` and `Swiftfin tvOS/`. UI work that touches shared behavior should consider both clients, even when the visible change starts on one platform.
+
+Good SwiftUI in this repo generally means:
+
+- Prefer native SwiftUI/UIKit components and existing Swiftfin components/modifiers before introducing custom UI.
+- Keep UI state ownership clear: use `@StateObject` when a view owns a view model, injected/bound state when it does not, and the existing `ViewModel`/`Stateful` action-state pattern for non-trivial async behavior.
+- Put networking, playback, persistence, and business logic in shared services, managers, or view models rather than inside `body`.
+- Navigate through `@Router` and `NavigationRoute` instead of ad hoc presentation flows.
+- Use existing design helpers such as `edgePadding`, poster styles, `ErrorView`, `ContentUnavailableView`, `Form`, `Section`, `ChevronButton`, `@Default(.accentColor)`, and platform helpers like `PlatformView` or `#if os(iOS)/#if os(tvOS)`.
+- Respect the Jellyfin/Swiftfin theme and user customization while avoiding one-off colors, spacing, typography, and controls that do not match nearby screens.
+- Treat accessibility, localization, loading, empty, error, cancellation, and refresh states as part of the UI implementation, not polish after the fact.
+
+Bad SwiftUI in this repo usually looks like hard-coded display text, view bodies that perform API work directly, duplicated iOS/tvOS UI that should share a model or component, bespoke controls where a native or existing component fits, unlocalized settings labels, storage-heavy work on the main actor, or platform assumptions that break focus, PiP, local network access, or device storage behavior.
+
+For UI/UX changes, `Documentation/contributing.md` says there is no separate formal design guide, but the project aims to use native SwiftUI/UIKit components while adhering to a Jellyfin theme. New UI components can receive upstream feedback or later redesign, and user customization is welcome only when it stays maintainable and preserves Swiftfin's distinct design.
+
+Testing expectations should match risk. Simulator testing is useful, but the project specifically calls out picture-in-picture, device storage, and local network access as areas where real hardware is recommended. Offline playback work should be validated on real devices because it directly involves storage, networking reachability, and playback behavior.
+
 ## Preparing An Upstream PR
 
 Prepare upstream PRs from `origin/main` so the submitted branch contains only manually curated project changes. Removing `.agents/` is not a concealment step; it keeps fork-only development scaffolding out of upstream. If AI materially assisted the work, disclose that in your own words and state that you manually reviewed and understand the submitted diff.
