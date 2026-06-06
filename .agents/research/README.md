@@ -29,6 +29,8 @@ Research files do not need a rigid template, but they should usually include:
 
 Prefer primary-source facts over interpretation. When including interpretation, label it clearly as interpretation.
 
+Keep upstream source links inside the research document. When opening or commenting on fork-only PRs that add these research files, do not put direct upstream PR/issue links or GitHub autolink syntax in the fork PR title, body, or comments.
+
 ## Upstream PR Research
 
 When documenting an upstream PR, the goal is context and memory building. The research should help a future agent understand what the PR is trying to accomplish, what has been observed, what remains uncertain, and where the proof lives. It is not an implementation plan unless the user explicitly asks for one.

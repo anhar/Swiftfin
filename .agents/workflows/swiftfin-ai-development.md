@@ -47,6 +47,18 @@ Use the vendored third-party `grill-with-docs` skill for plans that need careful
 
 Create Agent ADRs only for decisions that are meaningful to reverse, surprising without context, and the result of a real tradeoff. Keep these ADRs fork-only unless a decision is manually curated into upstream-facing Swiftfin documentation.
 
+## Fork-Only PR Hygiene
+
+Fork-only PRs in the `anhar/Swiftfin` fork are for agent context, research, and workflow review. Their titles, descriptions, and comments should not create timeline noise in upstream Jellyfin issues or pull requests.
+
+Do not use upstream-autolinking syntax in fork PR conversation text:
+
+- Avoid `#123`.
+- Avoid `jellyfin/Swiftfin#123`.
+- Avoid direct `https://github.com/jellyfin/Swiftfin/pull/...` or `/issues/...` URLs.
+
+Use plain, non-autolinked wording instead, such as `PR 1882 research`, `upstream pull request 1882 investigation`, or `the track-index research note`. Source links can still live inside `.agents/research/` documents when they are part of the evidence trail; the restriction is specifically for fork PR titles, descriptions, and comments that GitHub may publish as upstream references.
+
 ## Upstream Project Standards
 
 Before changing Swiftfin source, read the relevant project guidance:
