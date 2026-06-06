@@ -58,7 +58,7 @@ Do not identify upstream PRs or issues in fork PR conversation text:
 - Avoid plain upstream identifiers such as `PR 123`, `issue 123`, or `upstream pull request 123`.
 - Avoid direct `https://github.com/jellyfin/Swiftfin/pull/...` or `/issues/...` URLs.
 
-Use topical wording instead, such as `track-index research`, `playback investigation`, or `poster-library research note`. Source links can still live inside `.agents/research/` documents when they are part of the evidence trail; the restriction is specifically for fork PR titles, descriptions, and comments that GitHub may publish as upstream references.
+Use topical wording instead, such as `track-index research`, `playback investigation`, or `poster-library research note`. Source links and upstream identifiers can still live inside `.agents/research/` filenames and research-document bodies when they are part of the evidence trail; the restriction is specifically for fork PR titles, descriptions, comments, commit messages, and other visible PR metadata that GitHub may publish as upstream references.
 
 ## Upstream Project Standards
 
