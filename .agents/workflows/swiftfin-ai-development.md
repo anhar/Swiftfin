@@ -4,6 +4,8 @@
 
 Use AI tools for research, planning, and implementation support without leaking agent-only context into upstream Swiftfin pull requests. The key rule is simple: AI can help produce drafts, but the contributor must manually review, understand, and curate everything submitted upstream.
 
+The governing ethos is upstream respect. `ai/main` may be less convenient because protecting upstream Swiftfin, Jellyfin project norms, and maintainer attention matters more than agent speed. Avoid unnecessary upstream notifications, timeline events, issue churn, review burden, and public breadcrumbs from fork-only agent work.
+
 ## Keeping The Fork Base Current
 
 Use `ai/main` as the working base for AI-assisted development:
@@ -49,7 +51,7 @@ Create Agent ADRs only for decisions that are meaningful to reverse, surprising 
 
 ## Fork-Only PR Hygiene
 
-Fork-only PRs in the `anhar/Swiftfin` fork are for agent context, research, and workflow review. Their titles, descriptions, comments, and commit messages should not create timeline noise in upstream Jellyfin issues or pull requests, and should not visibly advertise private agent-context work back to upstream maintainers.
+Fork-only PRs in the `anhar/Swiftfin` fork are for agent context, research, and workflow review. Their titles, descriptions, comments, commit messages, branch names, and other visible metadata should not create timeline noise in upstream Jellyfin issues or pull requests, and should not visibly advertise private agent-context work back to upstream maintainers.
 
 Do not identify upstream PRs or issues in fork PR conversation text:
 
@@ -114,6 +116,8 @@ Do not add fork-only test harnesses, CI jobs, or `.agents/` quality scripts that
 
 Prepare upstream PRs from `origin/main` so the submitted branch contains only manually curated project changes. Removing `.agents/` is not a concealment step; it keeps fork-only development scaffolding out of upstream. If AI materially assisted the work, disclose that in your own words and state that you manually reviewed and understand the submitted diff.
 
+Do not open upstream PRs, create upstream issues, comment on upstream discussions, or publish upstream-facing PR text from agent output unless the human has explicitly reviewed the material and instructed that specific action. Agents can prepare drafts and verification checklists; the human contributor owns the final upstream communication.
+
 Recommended PR preparation flow:
 
 ```bash
@@ -140,6 +144,7 @@ Before upstream submission, confirm:
 - AI-assisted changes have been manually reviewed line by line.
 - The contributor can explain the behavior, risks, and tests without pasting AI output.
 - Any material AI assistance is disclosed in the contributor's own words.
+- No upstream PR, issue, comment, or maintainer-facing message is created without explicit human review and instruction.
 - Tests are proportional to the change: unit tests for logic, UI/manual validation for user-facing flows, and broader end-to-end checks for cross-screen or playback behavior.
 
 ## Documentation Rule

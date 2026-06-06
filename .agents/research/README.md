@@ -4,6 +4,8 @@ Store fork-only source, API, product, and ecosystem research here.
 
 Use this directory for findings that should survive across sessions but are not yet manually curated into Swiftfin `Documentation/`. If research becomes upstream-facing project documentation, rewrite and review it by hand before moving it into `Documentation/`.
 
+Research exists to preserve evidence for the fork, not to create work for upstream maintainers. Keep the fork's operating ethos from `.agents/adr/0007-respect-upstream-maintainer-attention.md` in view: precise upstream citations are useful inside research artifacts, but fork PR metadata and upstream-facing actions must stay clean, topical, and human-reviewed.
+
 ## File Naming
 
 Use descriptive, stable filenames that identify the subject being researched:
