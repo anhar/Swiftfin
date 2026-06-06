@@ -29,7 +29,7 @@ Research files do not need a rigid template, but they should usually include:
 
 Prefer primary-source facts over interpretation. When including interpretation, label it clearly as interpretation.
 
-Keep upstream source links inside the research document. When opening or commenting on fork-only PRs that add these research files, do not put direct upstream PR/issue links or GitHub autolink syntax in the fork PR title, body, or comments.
+Keep upstream source links inside the research document. When opening or commenting on fork-only PRs that add these research files, do not put upstream PR/issue numbers, direct upstream PR/issue links, or GitHub autolink syntax in the fork PR title, body, or comments.
 
 ## Upstream PR Research
 

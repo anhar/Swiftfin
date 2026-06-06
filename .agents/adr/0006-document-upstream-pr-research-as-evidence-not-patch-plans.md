@@ -2,7 +2,7 @@
 
 Status: accepted
 
-When documenting upstream PRs for fork-only agent memory, we will capture the problem statement, observed evidence, labeled inference, open questions, and bounded `Candidate Hypotheses / Future-Agent Validation` rather than turning concerns into implementation instructions. Hypothesis items must include evidence, inference, validation, confidence, and a "do not treat as" disclaimer. This keeps `.agents/research/` useful as a context-building paper trail for future agents while avoiding accidental ownership of upstream fixes that have not been requested. Fork-only PR titles, descriptions, and comments must also avoid upstream-autolinking syntax so agent-context work does not create irrelevant references in upstream Jellyfin timelines.
+When documenting upstream PRs for fork-only agent memory, we will capture the problem statement, observed evidence, labeled inference, open questions, and bounded `Candidate Hypotheses / Future-Agent Validation` rather than turning concerns into implementation instructions. Hypothesis items must include evidence, inference, validation, confidence, and a "do not treat as" disclaimer. This keeps `.agents/research/` useful as a context-building paper trail for future agents while avoiding accidental ownership of upstream fixes that have not been requested. Fork-only PR titles, descriptions, and comments must also avoid upstream PR/issue numbers, autolinks, and direct links so agent-context work does not create irrelevant references or visible fork-work breadcrumbs in upstream Jellyfin timelines.
 
 ## Considered Options
 
@@ -13,4 +13,4 @@ When documenting upstream PRs for fork-only agent memory, we will capture the pr
 
 ## Consequences
 
-Future upstream PR research should distinguish what the PR claims, what the code shows, what was directly verified, what is inferred, and what remains unknown. Candidate hypotheses can be recorded, but they are not endorsed fixes or maintainer decisions. If a user explicitly asks for fixes or implementation planning, that work can happen separately from the research note. Source links may remain inside `.agents/research/` files as evidence, but fork PR conversation text should use non-autolinked wording such as `PR 1882 research` instead of `#1882`, `owner/repo#1882`, or a direct upstream GitHub URL.
+Future upstream PR research should distinguish what the PR claims, what the code shows, what was directly verified, what is inferred, and what remains unknown. Candidate hypotheses can be recorded, but they are not endorsed fixes or maintainer decisions. If a user explicitly asks for fixes or implementation planning, that work can happen separately from the research note. Source links may remain inside `.agents/research/` files as evidence, but fork PR conversation text should use topical wording such as `track-index research` instead of `PR 123`, `#123`, `owner/repo#123`, or a direct upstream GitHub URL.
