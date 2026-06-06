@@ -22,6 +22,24 @@ Swiftfin `Documentation/` files are treated like source files. They can be draft
 - Feature branches: branch from `ai/main` during AI-assisted exploration and development.
 - Upstream PR branches: create from `origin/main`, then apply only manually curated source/docs changes. Do not include `.agents/` history or agent-only files in upstream PR branches.
 
+## Discovery And Progressive Disclosure
+
+This fork intentionally keeps agent guidance under `.agents/` instead of root `AGENTS.md`. That compromise reduces the chance that agent-only instructions are submitted upstream, but it also means future agents may not automatically discover this workspace context.
+
+Impact for future agents:
+
+- A fresh agent that only reads root project files may miss the `ai/main` branch model, sanitizer, ADRs, research conventions, and fork-only workflow terms.
+- An agent that does inspect hidden workspace folders can progressively disclose context from this file, then `.agents/CONTEXT.md`, `.agents/adr/`, `.agents/research/`, and `.agents/workflows/` as needed.
+- Research and ADR memory are only useful if the agent first discovers `.agents/`; otherwise the fork may behave like a clean upstream checkout with hidden local history.
+
+Current recommendation:
+
+- Keep `.agents/README.md` as the durable fork-only entrypoint.
+- At the start of agent sessions on `ai/main` or branches derived from it, inspect `.agents/README.md` before making workflow, research, planning, or upstream-PR-prep decisions.
+- If future agents repeatedly miss `.agents/` context or violate the branch/sanitizer/research conventions, reconsider adding a minimal root `AGENTS.md` pointer on `ai/main`.
+
+If a root `AGENTS.md` is added later, keep it small and fork-only. It should point agents to `.agents/README.md`, state that `.agents/` and `AGENTS.md` must never be submitted upstream, and rely on `.agents/scripts/sanitize-for-upstream.sh` for cleanup. Do not duplicate detailed workflow policy in root `AGENTS.md`.
+
 ## Scripts
 
 - `.agents/scripts/update-ai-main.sh`: update `main` from upstream, push `origin/main`, merge the updated `main` into `ai/main`, and push `origin/ai/main`.
