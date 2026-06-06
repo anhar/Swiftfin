@@ -2,7 +2,7 @@
 
 Status: accepted
 
-When documenting upstream PRs for fork-only agent memory, we will capture the problem statement, observed evidence, labeled inference, open questions, and bounded `Candidate Hypotheses / Future-Agent Validation` rather than turning concerns into implementation instructions. Hypothesis items must include evidence, inference, validation, confidence, and a "do not treat as" disclaimer. This keeps `.agents/research/` useful as a context-building paper trail for future agents while avoiding accidental ownership of upstream fixes that have not been requested. Fork-only PR titles, descriptions, and comments must also avoid upstream PR/issue numbers, autolinks, and direct links so agent-context work does not create irrelevant references or visible fork-work breadcrumbs in upstream Jellyfin timelines.
+When documenting upstream PRs for fork-only agent memory, we will capture the problem statement, observed evidence, labeled inference, open questions, and bounded `Candidate Hypotheses / Future-Agent Validation` rather than turning concerns into implementation instructions. Hypothesis items must include evidence, inference, validation, confidence, and a "do not treat as" disclaimer. This keeps `.agents/research/` useful as a context-building paper trail for future agents while avoiding accidental ownership of upstream fixes that have not been requested. Fork-only PR titles, descriptions, comments, and commit messages must also avoid upstream PR/issue numbers, autolinks, and direct links so agent-context work does not create irrelevant references or visible fork-work breadcrumbs in upstream Jellyfin timelines.
 
 ## Considered Options
 

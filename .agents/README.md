@@ -12,7 +12,7 @@ Swiftfin follows Jellyfin's LLM/AI Development Policy:
 - PR descriptions, issue comments, feature requests, and community messages must be written by the contributor, not pasted from an AI response.
 - Generated or agent-only files such as `.agents/`, `AGENTS.md`, `.codex/`, `.claude/`, and similar metadata must be removed before upstream PR preparation.
 - Removing agent-only files is repository hygiene, not concealment. If AI materially assisted the work, disclose that in the contributor's own words and state that the submitted diff was manually reviewed and understood.
-- Fork-only PR titles, descriptions, and comments must not identify upstream Jellyfin PRs/issues by number or link. Avoid syntax such as `#123`, `jellyfin/Swiftfin#123`, plain phrases such as `PR 123`, or direct GitHub PR/issue URLs in fork PR conversation text because GitHub can create irrelevant upstream timeline references and visible fork-work breadcrumbs.
+- Fork-only PR titles, descriptions, comments, and commit messages must not identify upstream Jellyfin PRs/issues by number or link. Avoid syntax such as `#123`, `jellyfin/Swiftfin#123`, plain phrases such as `PR 123`, or direct GitHub PR/issue URLs in fork PR conversation text because GitHub can create irrelevant upstream timeline references and visible fork-work breadcrumbs.
 
 Swiftfin `Documentation/` files are treated like source files. They can be drafted with AI assistance during development, but they need the same manual review and curation as Swift code before submission upstream.
 

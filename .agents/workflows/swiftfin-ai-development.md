@@ -49,7 +49,7 @@ Create Agent ADRs only for decisions that are meaningful to reverse, surprising 
 
 ## Fork-Only PR Hygiene
 
-Fork-only PRs in the `anhar/Swiftfin` fork are for agent context, research, and workflow review. Their titles, descriptions, and comments should not create timeline noise in upstream Jellyfin issues or pull requests, and should not visibly advertise private agent-context work back to upstream maintainers.
+Fork-only PRs in the `anhar/Swiftfin` fork are for agent context, research, and workflow review. Their titles, descriptions, comments, and commit messages should not create timeline noise in upstream Jellyfin issues or pull requests, and should not visibly advertise private agent-context work back to upstream maintainers.
 
 Do not identify upstream PRs or issues in fork PR conversation text:
 
